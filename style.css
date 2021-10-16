@@ -13,11 +13,10 @@ body{
 
 
 .navbar{
-    display: flex;
-    align-items: center;
     height: 15vh;
     width: 100vw;
     background-color: grey;
+    display:flex
 
 }
 
@@ -26,8 +25,8 @@ body{
     width:100vw;
 }
 .filters,.action-button{
-    border: 1px solid;
-    background-color: brown;
+    /* border: 1px solid; */
+    background-color: #2c3e50;
     height: 50%;
     /* display: inline-block; */
     margin: calc( (25 / 100 ) * 15vh );
@@ -40,6 +39,7 @@ body{
 .action-button{
     width: 8rem;
     display: flex;
+    
 }
 .filter{
     height:100%;
@@ -52,20 +52,25 @@ body{
 /*pseudo - class (a construct which tells that css element is in which state*/
 
 .filter:hover{
-    background-color: chartreuse;
+    background-color: #7f8c8d;
 }
 
 .add,.delete{
     height:100%;
     width:50%;
-    border:1px solid;
-
+    border:1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    
 }
+
 .add:hover{
-    background-color: greenyellow;
+    background-color: #7f8c8d;
 }
 .delete:hover{
-    background-color: greenyellow;
+    background-color: #7f8c8d;
 }
 
 .filter div{
@@ -73,4 +78,20 @@ body{
     width: 50%;
     border:1px solid;
     border-radius: 5px;
+}
+
+.pink{
+    background-color: #ff7979;
+}
+.blue{
+    background-color: #3867d6;
+}
+.yellow{
+    background-color: yellow
+}
+.black{
+    background-color: black;
+}
+.material-icons{
+    font-size: 2rem!important;
 }
