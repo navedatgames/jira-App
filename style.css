@@ -95,3 +95,13 @@ body{
 .material-icons{
     font-size: 2rem!important;
 }
+
+.modal{
+    height:10rem;
+    width:20rem;
+    background-color: #7f8c8d;
+    position: fixed;
+    top:25vh;
+    left:50%;
+    transform: translateX(-50%);
+}
