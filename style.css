@@ -148,6 +148,11 @@ body{
     border-color: white;
 }
 
+.selected{
+    border: 3px solid;
+    border-color: white;
+}
+
 .priroty-container{
     height: 80%;
     width:70%;
@@ -158,4 +163,32 @@ body{
     justify-content: space-evenly;
     background-color: grey;
     
+}
+.ticket{
+    height: 20vh;
+    width: 30vh;
+    border:1px solid
+}
+.color{
+    height: 10%;
+    width:100%;
+ 
+}
+.id{
+    height: 15%;
+    width:100%;
+  
+    font-size: 1.1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.task{
+    height: 75%;
+    width:100%;
+  
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: auto;
+    padding: 0.4rem;
+    background-color:#f1f2f6;
 }
