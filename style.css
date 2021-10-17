@@ -164,10 +164,18 @@ body{
     background-color: grey;
     
 }
+
+.grid{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+}
 .ticket{
     height: 20vh;
     width: 30vh;
-    border:1px solid
+    border:1px solid;
+    margin:20px;
 }
 .color{
     height: 10%;
