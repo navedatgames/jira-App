@@ -1,10 +1,14 @@
 let addbt = document.querySelector(".add")
 let body = document.querySelector("body")
 let grid = document.querySelector(".grid")
+let delbt = document.querySelector(".delete")
 
 let colors = ["pink", "blue","yellow","black"]
 
 addbt.addEventListener("click",function(){  
+
+    deleteMode = false;
+    delbt.classList.remove("delete-selected")
     let preModal = document.querySelector(".modal")
     if(preModal!=null)  return;
     let div = document.createElement("div")
@@ -44,10 +48,10 @@ addbt.addEventListener("click",function(){
             
     
             let tickerDiv = document.createElement("div")
-
+            let id  = uid();
             tickerDiv.innerHTML =  ` <div class="ticket">
             <div class="color ${tickerColor}"></div>
-            <div class="id">#aed123</div>
+            <div class="id">${id}</div>
             <div class="task">${e.currentTarget.innerText}</div>
 
 
@@ -58,7 +62,6 @@ addbt.addEventListener("click",function(){
 
             ticketColor.addEventListener("click",function(e){
                 let currentColor = e.currentTarget.classList[1];
-                console.log(currentColor)
                 let index = -1;
                 for(let i =0;i<colors.length;i++){
                     if(currentColor==colors[i]) index = i;
@@ -72,6 +75,12 @@ addbt.addEventListener("click",function(){
                 ticketColor.classList.add(newcolor);
             })
 
+            tickerDiv.addEventListener("click",function(e){
+                if(deleteMode){
+                    e.currentTarget.remove();
+                }
+            })
+
             div.remove();
 
             grid.append(tickerDiv)
@@ -83,5 +92,16 @@ addbt.addEventListener("click",function(){
     })
 
     body.append(div)
+})
+let deleteMode = false;
+delbt.addEventListener("click",function(e){
+    if(e.currentTarget.classList.contains("delete-selected")){
+    e.currentTarget.classList.remove("delete-selected");
+    deleteMode = false;
+    }
+    else{
+        e.currentTarget.classList.add("delete-selected")
+        deleteMode = true;
+    }
 })
 
