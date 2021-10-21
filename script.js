@@ -64,16 +64,16 @@ addbt.addEventListener("click",function(){
         if(e.key=="Enter"){
             let id  = uid();
             let task = e.currentTarget.innerText
-
+            //bring data from data storage
             allTickets = JSON.parse(localStorage.getItem("Alltickets"))
-
+            //update
             ticketObj = {
                 color:tickerColor,
                 taskValue:task
             }
 
             allTickets[id] = ticketObj
-
+            //save the data
             allTickets = JSON.stringify(allTickets)
             localStorage.setItem("Alltickets",allTickets)
 
