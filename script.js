@@ -5,6 +5,23 @@ let delbt = document.querySelector(".delete")
 
 let colors = ["pink", "blue","yellow","black"]
 
+
+//local storage create kiya hai
+
+if(localStorage.getItem("Alltickets")==undefined){
+    let allTickets = {}
+
+    allTickets = JSON.stringify(allTickets)
+    localStorage.setItem("Alltickets",allTickets)
+}
+
+
+
+
+
+
+
+
 addbt.addEventListener("click",function(){  
 
     deleteMode = false;
@@ -45,14 +62,30 @@ addbt.addEventListener("click",function(){
 
     textarea.addEventListener("keypress",function(e){
         if(e.key=="Enter"){
+            let id  = uid();
+            let task = e.currentTarget.innerText
+
+            allTickets = JSON.parse(localStorage.getItem("Alltickets"))
+
+            ticketObj = {
+                color:tickerColor,
+                taskValue:task
+            }
+
+            allTickets[id] = ticketObj
+
+            allTickets = JSON.stringify(allTickets)
+            localStorage.setItem("Alltickets",allTickets)
+
+            
             
     
             let tickerDiv = document.createElement("div")
-            let id  = uid();
+            
             tickerDiv.innerHTML =  ` <div class="ticket">
             <div class="color ${tickerColor}"></div>
             <div class="id">${id}</div>
-            <div class="task">${e.currentTarget.innerText}</div>
+            <div class="task">${task}</div>
 
 
             </div>`;
