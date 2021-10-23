@@ -193,10 +193,11 @@ body{
 .task{
     height: 75%;
     width:100%;
-  
+  outline: none;
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
     overflow: auto;
     padding: 0.4rem;
     background-color:#f1f2f6;
+    text-align: center;
 }
