@@ -15,7 +15,7 @@ if(localStorage.getItem("Alltickets")==undefined){
     localStorage.setItem("Alltickets",allTickets)
 }
 
-
+loadTickets()
 
 
 
@@ -166,3 +166,79 @@ delbt.addEventListener("click",function(e){
     }
 })
 
+//load tickets 
+function loadTickets(){
+    let allTickets = JSON.parse(localStorage.getItem("Alltickets"));
+
+    for(x in allTickets){
+        let currentTicketId = x;
+        let singleTicketobj = allTickets[x];
+
+
+        let tickerDiv = document.createElement("div")
+        tickerDiv.classList.add("ticket")
+        tickerDiv.setAttribute("data-id",currentTicketId)
+        tickerDiv.innerHTML =  ` <div data-id = "${currentTicketId}" class="color ${singleTicketobj.color}"></div>
+        <div class="id">${currentTicketId}</div>
+        <div data-id = "${currentTicketId}" class="task" contenteditable = "true">${singleTicketobj.taskValue}</div>
+
+
+        </div>`;
+
+
+        let ticketColor = tickerDiv.querySelector(".color")
+        let tickettask = tickerDiv.querySelector(".task");
+
+        tickettask.addEventListener("input",function(e){
+            let curTicktetId = e.currentTarget.getAttribute("data-id")
+            let updateTask = e.currentTarget.innerText;
+            
+            let allTickets = JSON.parse(localStorage.getItem("Alltickets"))
+
+            allTickets[curTicktetId].taskValue = updateTask
+
+            localStorage.setItem("Alltickets",JSON.stringify(allTickets))
+        })
+
+        ticketColor.addEventListener("click",function(e){
+            let curTicktetId = e.currentTarget.getAttribute("data-id")
+            let currentColor = e.currentTarget.classList[1];
+            let index = -1;
+            for(let i =0;i<colors.length;i++){
+                if(currentColor==colors[i]) index = i;
+            }
+
+            index++;
+            index = index%4;
+            let newcolor = colors[index];
+
+            let allTickets = JSON.parse(localStorage.getItem("Alltickets"))
+
+            allTickets[curTicktetId].color = newcolor;
+
+            allTickets = JSON.stringify(allTickets)
+
+            localStorage.setItem("Alltickets",allTickets)
+
+            ticketColor.classList.remove(currentColor);
+            ticketColor.classList.add(newcolor);
+        })
+
+        tickerDiv.addEventListener("click",function(e){
+            if(deleteMode){
+                let curTicketId = e.currentTarget.getAttribute("data-id")
+                let allTickets = JSON.parse(localStorage.getItem("Alltickets"))
+
+                delete allTickets[curTicketId]
+
+                localStorage.setItem("Alltickets",JSON.stringify(allTickets))
+
+                e.currentTarget.remove();
+            }
+        })
+
+        grid.append(tickerDiv)
+    }
+
+
+}
